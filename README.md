@@ -3,11 +3,15 @@ django-oss-storage
 
 django storage backend for aliyun oss
 
+Install
+-------
+
 settings
 --------
 `DEFAULT_FILE_STORAGE` or `STATICFILES_STORAGE` should be set:
 ```
 DEFAULT_FILE_STORAGE = 'storages.backends.aliyun_oss.OssStorage'
+STATICFILES_STORAGE = 'storages.backends.aliyun_oss.OssStorage'
 ```
 when using oss as your storage backend.
 
