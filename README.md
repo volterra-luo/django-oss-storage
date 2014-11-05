@@ -27,6 +27,14 @@ Aliyun OSS distributes their data center in Hangzhou, Beijing, Qingdao, and Hong
   * oss-cn-beijing.aliyuncs.com
   * oss-cn-qingdao.aliyuncs.com
   * oss-cn-hongkong.aliyuncs.com
+ 
+The counterpart internal access addresses are:
+
+  * oss-internal.aliyuncs.com equivalent to oss-cn-hangzhou-internal.aliyuncs.com
+  * oss-cn-beijing-internal.aliyuncs.com
+  * oss-cn-qingdao-internal.aliyuncs.com
+  * oss-cn-hongkong-internal.aliyuncs.com
+ 
 
 ``OSS_STORAGE_BUCKET_NAME``
 Your Amazon Web Services storage bucket name, as a string.
