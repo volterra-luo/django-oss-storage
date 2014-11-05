@@ -37,7 +37,6 @@ The counterpart internal access addresses are:
  
 
 ``OSS_STORAGE_BUCKET_NAME``
-
 Your Aliyun OSS bucket name, as a string.
 
 
