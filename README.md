@@ -20,7 +20,9 @@ This setting sets the path to the OSS storage class, this file will be installed
 DEFAULT_FILE_STORAGE = 'storages.backends.aliyun_oss.OssStorage'
 ```
 
-To allow django-admin.py collectstatic to automatically put your static files in your bucket set the `STATICFILES_STORAGE` in your settings.py:
+`STATICFILES_STORAGE`
+
+To allow django-admin.py collectstatic to automatically put your static files in your bucket set the following in your settings.py:
 
 ```Python
 
@@ -29,10 +31,14 @@ STATICFILES_STORAGE = 'storages.backends.aliyun_oss.OssStorage'
 when using oss as your storage backend.
 
 ``OSS_ACCESS_KEY_ID``
+
 Your Aliyun OSS access key, as a string.
 
 ``OSS_SECRET_ACCESS_KEY``
+
 Your Aliyun OSS secret access key, as a string.
+
+``OSS_HOST``
 
 Aliyun OSS distributes their data center in Hangzhou, Beijing, Qingdao, and Hongkong, so you should explicitly set your  ``OSS_HOST`` where you would like to hold your bucket. Public access addresses available as following:
 
@@ -50,6 +56,7 @@ The counterpart internal access addresses are:
  
 
 ``OSS_STORAGE_BUCKET_NAME``
+
 Your Aliyun OSS bucket name, as a string.
 
 If you’d like to set headers sent with each file of the storage, please set ``OSS_HEADERS`` (optional):
