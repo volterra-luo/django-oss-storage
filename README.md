@@ -21,12 +21,12 @@ Your Aliyun OSS access key, as a string.
 ``OSS_SECRET_ACCESS_KEY``
 Your Aliyun OSS secret access key, as a string.
 
-Aliyun OSS distributes their data center in HangZhou, Beijing, Qingdao, and HongKong, so you should explicitly set your  ``OSS_HOST`` where you would like to hold your bucket. Public access addresses available as following:
+Aliyun OSS distributes their data center in Hangzhou, Beijing, Qingdao, and Hongkong, so you should explicitly set your  ``OSS_HOST`` where you would like to hold your bucket. Public access addresses available as following:
 
-  *oss.aliyuncs.com (default) equivalent to oss-cn-hangzhou.aliyuncs.com
-  *oss-cn-beijing.aliyuncs.com
-  *oss-cn-qingdao.aliyuncs.com
-  *oss-cn-hongkong.aliyuncs.com
+  * oss.aliyuncs.com (default) equivalent to oss-cn-hangzhou.aliyuncs.com
+  * oss-cn-beijing.aliyuncs.com
+  * oss-cn-qingdao.aliyuncs.com
+  * oss-cn-hongkong.aliyuncs.com
 
 ``OSS_STORAGE_BUCKET_NAME``
 Your Amazon Web Services storage bucket name, as a string.
