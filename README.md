@@ -5,7 +5,7 @@ django storage backend for aliyun oss
 
 settings
 --------
-``DEFAULT_FILE_STORAGE``
+`DEFAULT_FILE_STORAGE`
 
 ``OSS_ACCESS_KEY_ID``
 
