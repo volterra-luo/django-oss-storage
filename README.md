@@ -32,11 +32,11 @@ when using oss as your storage backend.
 
 ``OSS_ACCESS_KEY_ID``
 
-Your Aliyun OSS access key, as a string.
+>>Your Aliyun OSS access key, as a string.
 
 ``OSS_SECRET_ACCESS_KEY``
 
-Your Aliyun OSS secret access key, as a string.
+>>Your Aliyun OSS secret access key, as a string.
 
 ``OSS_HOST``
 
@@ -57,9 +57,11 @@ The counterpart internal access addresses are:
 
 ``OSS_STORAGE_BUCKET_NAME``
 
-Your Aliyun OSS bucket name, as a string.
+>>Your Aliyun OSS bucket name, as a string.
 
 If you’d like to set headers sent with each file of the storage, please set ``OSS_HEADERS`` (optional):
+
+``OSS_HEADERS``
 
 ```Python
 OSS_HEADERS = {
