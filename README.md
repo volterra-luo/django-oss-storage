@@ -9,7 +9,7 @@ Install
 settings
 --------
 `DEFAULT_FILE_STORAGE` or `STATICFILES_STORAGE` should be set:
-```
+```Python
 DEFAULT_FILE_STORAGE = 'storages.backends.aliyun_oss.OssStorage'
 STATICFILES_STORAGE = 'storages.backends.aliyun_oss.OssStorage'
 ```
