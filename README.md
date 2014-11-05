@@ -37,6 +37,7 @@ The counterpart internal access addresses are:
  
 
 ``OSS_STORAGE_BUCKET_NAME``
-Your Amazon Web Services storage bucket name, as a string.
+
+Your Aliyun OSS bucket name, as a string.
 
 
