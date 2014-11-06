@@ -137,43 +137,47 @@ class OssStorage(Storage):
     def _put_file(self, name, content):
         pass
 
-
-	def _open(self, name, mode='rb'):
+    def _open(self, name, mode='rb'):
 		pass
 
     def _read(self, name, start_range=None, end_range=None):
         pass
-        
-	def _save(self, name, content):
-		pass
 
-	def delete(self, name):
+    def _save(self, name, content):
+        name = self._clean_name(name)
+        content.open()
+        if hasattr(content, 'chunks'):
+            content_str = ''.join(chunk for chunk in content.chunks())
+        else:
+            content_str = content.read()
+        self._put_file(name, content_str)
+        return name
+
+    def delete(self, name):
         name = self._clean_name(name)
         res = self.connection.delete_object(self.bucket, name)
         if res.status != 204:
             raise IOError("OssStorageError: %s" % res.read())
 
-	def exists(self, name):
+    def exists(self, name):
         name = self._clean_name(name)
         if self.entries:
             return name in self.entries
         res = self.connection.head_object(self.bucket, name)
         return res.status == 200
 
-	def listdir(self, path):
+    def listdir(self, path):
         pass
 
-	def size(self, name):
+    def size(self, name):
 		pass
-         
 
-	def url(self, name):
+    def url(self, name):
         name = self._clean_name(name)
         if self.base_url is None:
             raise ValueError("This file is not accessible via a URL.")
         return urljoin(self.base_url, filepath_to_uri(name))
 
-    
     def modified_time(self, name):
         pass
 
