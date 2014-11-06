@@ -203,7 +203,7 @@ class OssStorage(Storage):
         if self.entries:
             entry = self.entries.get(name)
             if entry:
-                return entry[3]
+                return int(entry[3])
             return 0
         
         res = self.connection.head_object(self.bucket, name, self.headers)
