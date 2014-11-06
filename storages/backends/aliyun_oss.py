@@ -118,13 +118,13 @@ class OssStorage(Storage):
 
         return None, None
 
-    
     @property
     def entries(self):
         pass
 	
     def _clean_name(self, name):
-        pass
+        # Useful for windows' paths
+        return os.path.join(BUCKET_PREFIX, os.path.normpath(name).replace('\\', '/'))
 
     def _compress_string(self, s):
         pass
