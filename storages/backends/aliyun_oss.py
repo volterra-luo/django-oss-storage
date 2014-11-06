@@ -105,7 +105,18 @@ class OssStorage(Storage):
         self._entries = {}
 
     def _get_access_keys(self):
-        pass
+        access_key = ACCESS_KEY_NAME
+        secret_key = SECRET_KEY_NAME
+        # only provided access_key or only provided secret_key
+        if (access_key or secret_key) and (not access_key or not secret_key):
+            access_key = os.environ.get(ACCESS_KEY_NAME)
+            secret_key = os.environ.get(SECRET_KEY_NAME)
+
+        if access_key and secret_key:
+            # Both were provided, so use them
+            return access_key, secret_key
+
+        return None, None
 
     
     @property
