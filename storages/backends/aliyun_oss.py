@@ -135,7 +135,24 @@ class OssStorage(Storage):
         return zbuf.getvalue()
 
     def _put_file(self, name, content):
-        pass
+
+        if self.encrypt:
+            pass
+
+        content_type = mimetypes.guess_type(name)[0] or "application/x-octet-stream"
+
+        if self.gzip and content_type in self.gzip_content_types:
+            content = self._compress_string(content)
+            self.headers.update({'Content-Encoding': 'gzip'})
+
+        self.headers.update({
+            'x-oss-acl': self.acl,
+            'Content-Type': content_type,
+            'Content-Length' : str(len(content)),
+        })
+        res = self.connection.put_object_from_string(self.bucket, name, content, content_type, self.headers)
+        if res.status not in (200, 206):
+            raise IOError("OssStorageError: %s" % res.read())
 
     def _open(self, name, mode='rb'):
 		pass
