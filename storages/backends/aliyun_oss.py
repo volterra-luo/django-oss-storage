@@ -256,6 +256,19 @@ class OssStorageFile(File):
         self.file = StringIO()
         self.start_range = 0
 
+    @property
+    def size(self):
+        pass
+
+    def read(self, num_bytes=None):
+        pass
+
+    def write(self, content):
+        pass
+
+    def close(self):
+        pass
+
 		
 if __name__=='__main__':
 	pass
