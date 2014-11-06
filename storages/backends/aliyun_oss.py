@@ -120,7 +120,19 @@ class OssStorage(Storage):
 
     @property
     def entries(self):
-        pass
+        # entry is a tuple of
+        # (object_key, last_modified, etag, size, owner.id, owner.display_name, storage_class)
+        if self.preload_metadata and not self._entries:
+            res = self.connection.list_bucket(self.bucket, self.prefix, 
+                    self.marker, self.delimiter, self.maxkeys, self.headers)
+            
+            if (res.status / 100) == 2:
+                body = res.read()
+                h = GetBucketXml(body)
+                (file_list, common_list) = h.list()
+                self._entries = dict((entry[0], entry) for entry in file_list)
+        
+        return self._entries
 	
     def _clean_name(self, name):
         # Useful for windows' paths
