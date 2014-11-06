@@ -149,18 +149,20 @@ class OssStorage(Storage):
 		pass
 
 	def delete(self, name):
-        pass
+        name = self._clean_name(name)
+        res = self.connection.delete_object(self.bucket, name)
+        if res.status != 204:
+            raise IOError("OssStorageError: %s" % res.read())
 
 	def exists(self, name):
-       pass
+        pass
 
 	def listdir(self, path):
-       pass
+        pass
 
 	def size(self, name):
 		pass
-        
-       
+         
 
 	def url(self, name):
         name = self._clean_name(name)
