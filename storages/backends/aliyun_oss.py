@@ -145,7 +145,14 @@ class OssStorage(Storage):
         pass
         
 	def _save(self, name, content):
-		pass
+        name = self._clean_name(name)
+        content.open()
+        if hasattr(content, 'chunks'):
+            content_str = ''.join(chunk for chunk in content.chunks())
+        else:
+            content_str = content.read()
+        self._put_file(name, content_str)
+        return name
 
 	def delete(self, name):
         name = self._clean_name(name)
