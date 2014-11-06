@@ -201,7 +201,14 @@ class OssStorage(Storage):
 class OssStorageFile(File):
     """OssStorageFile is a File object that 
         implements logic specific for OSS backend storage system"""
-    pass
+
+    def __init__(self, name, storage, mode):
+        self._name =  name
+        self._storage = storage
+        self._mode = mode
+        self._is_dirty = False
+        self.file = StringIO()
+        self.start_range = 0
 
 		
 if __name__=='__main__':
