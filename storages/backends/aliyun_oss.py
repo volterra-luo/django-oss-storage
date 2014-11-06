@@ -199,7 +199,19 @@ class OssStorage(Storage):
         pass
 
     def size(self, name):
-		pass
+        name = self._clean_name(name)
+        if self.entries:
+            entry = self.entries.get(name)
+            if entry:
+                return entry[3]
+            return 0
+        
+        res = self.connection.head_object(self.bucket, name, self.headers)
+        if (res.status / 100) == 2:
+            header_map = convert_header2map(res.getheaders())
+            content_length = safe_get_element("content-length", header_map)
+        
+        return content_length and int(content_length) or 0
 
     def url(self, name):
         name = self._clean_name(name)
