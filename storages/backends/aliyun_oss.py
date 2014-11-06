@@ -167,7 +167,8 @@ class OssStorage(Storage):
             raise IOError("OssStorageError: %s" % res.read())
 
     def _open(self, name, mode='rb'):
-		pass
+        '''_open should return a subclass of Django File object'''
+        pass
 
     def _read(self, name, start_range=None, end_range=None):
         pass
