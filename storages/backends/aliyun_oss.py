@@ -120,6 +120,8 @@ class OssStorage(Storage):
 
     @property
     def entries(self):
+        # entry is a tuple of
+        # (object_key, last_modified, etag, size, owner.id, owner.display_name, storage_class)
         if self.preload_metadata and not self._entries:
             res = self.connection.list_bucket(self.bucket, self.prefix, 
                     self.marker, self.delimiter, self.maxkeys, self.headers)
