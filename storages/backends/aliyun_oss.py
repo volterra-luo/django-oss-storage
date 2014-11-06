@@ -143,8 +143,8 @@ class OssStorage(Storage):
 
     def _read(self, name, start_range=None, end_range=None):
         pass
-        
-	def _save(self, name, content):
+
+    def _save(self, name, content):
         name = self._clean_name(name)
         content.open()
         if hasattr(content, 'chunks'):
