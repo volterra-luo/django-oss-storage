@@ -208,7 +208,26 @@ class OssStorage(Storage):
         return urljoin(self.base_url, filepath_to_uri(name))
 
     def modified_time(self, name):
-        pass
+        try:
+           from dateutil import parser, tz
+        except ImportError:
+            raise NotImplementedError()
+        name = self._clean_name(name)
+        if self.entries:
+            last_modified = self.entries.get(name)[1]
+        else:
+            res = self.connection.head_object(self.bucket, name)
+            header_map = convert_header2map(res.getheaders())
+            last_modified = safe_get_element('Last-Modified', header_map)
+            last_modified = unicode(last_modified)
+        
+        # convert to string to date
+        last_modified_date = parser.parse(last_modified)
+        # if the date has no timzone, assume UTC
+        if last_modified_date.tzinfo == None:
+            last_modified_date = last_modified_date.replace(tzinfo=tz.tzutc())
+        # convert date to local time w/o timezone
+        return last_modified_date.astimezone(tz.tzlocal()).replace(tzinfo=None) 
 
 class OssStorageFile(File):
     """OssStorageFile is a File object that 
