@@ -168,6 +168,10 @@ class OssStorage(Storage):
 
     def _open(self, name, mode='rb'):
         '''_open should return a subclass of Django File object'''
+        name = self._clean_name(name)
+        remote_file = OssStorageFile(name, self, mode=mode)
+        return remote_file
+
         pass
 
     def _read(self, name, start_range=None, end_range=None):
