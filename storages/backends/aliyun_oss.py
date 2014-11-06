@@ -172,8 +172,6 @@ class OssStorage(Storage):
         remote_file = OssStorageFile(name, self, mode=mode)
         return remote_file
 
-        pass
-
     def _read(self, name, start_range=None, end_range=None):
         pass
 
