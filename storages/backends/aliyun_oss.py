@@ -135,7 +135,6 @@ class OssStorage(Storage):
         return zbuf.getvalue()
 
     def _put_file(self, name, content):
-        
         pass
 
 
@@ -143,7 +142,7 @@ class OssStorage(Storage):
 		pass
 
     def _read(self, name, start_range=None, end_range=None):
-       pass
+        pass
         
 
 	def _save(self, name, content):
@@ -164,7 +163,10 @@ class OssStorage(Storage):
        
 
 	def url(self, name):
-        pass
+        name = self._clean_name(name)
+        if self.base_url is None:
+            raise ValueError("This file is not accessible via a URL.")
+        return urljoin(self.base_url, filepath_to_uri(name))
 
     
     def modified_time(self, name):
