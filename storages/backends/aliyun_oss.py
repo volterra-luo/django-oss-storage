@@ -127,7 +127,12 @@ class OssStorage(Storage):
         return os.path.join(BUCKET_PREFIX, os.path.normpath(name).replace('\\', '/'))
 
     def _compress_string(self, s):
-        pass
+        """Gzip a given string."""
+        zbuf = StringIO()
+        zfile = GzipFile(mode='wb', compresslevel=6, fileobj=zbuf)
+        zfile.write(s)
+        zfile.close()
+        return zbuf.getvalue()
 
     def _put_file(self, name, content):
         
