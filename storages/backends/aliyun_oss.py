@@ -144,7 +144,6 @@ class OssStorage(Storage):
     def _read(self, name, start_range=None, end_range=None):
         pass
         
-
 	def _save(self, name, content):
 		pass
 
@@ -155,7 +154,11 @@ class OssStorage(Storage):
             raise IOError("OssStorageError: %s" % res.read())
 
 	def exists(self, name):
-        pass
+        name = self._clean_name(name)
+        if self.entries:
+            return name in self.entries
+        res = self.connection.head_object(self.bucket, name)
+        return res.status == 200
 
 	def listdir(self, path):
         pass
