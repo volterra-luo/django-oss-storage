@@ -258,7 +258,9 @@ class OssStorageFile(File):
 
     @property
     def size(self):
-        pass
+        if not hasattr(self, '_size'):
+            self._size = self._storage.size(self._name)
+        return self._size
 
     def read(self, num_bytes=None):
         pass
