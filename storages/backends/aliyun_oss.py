@@ -173,7 +173,25 @@ class OssStorage(Storage):
         return remote_file
 
     def _read(self, name, start_range=None, end_range=None):
-        pass
+        name = self._clean_name(name)
+        if start_range is None:
+            headers = {}
+        else:
+            headers = {'Range': 'bytes=%s-%s' % (start_range, end_range)}
+        
+        res = self.connection.get_object(self.bucket, name, headers)
+        
+        if (res.status / 100) == 2:
+            header_map = convert_header2map(res.getheaders())
+            etag = safe_get_element("etag", header_map).upper()
+            content_range = safe_get_element("content-range", header_map)
+
+            if self.encrypt:
+                pass
+
+            return res.read(), etag, content_range
+        else:
+            raise IOError("OssStorageError: %s" % res.read())
 
     def _save(self, name, content):
         name = self._clean_name(name)
