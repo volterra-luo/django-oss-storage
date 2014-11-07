@@ -31,5 +31,5 @@ setup(
         'Topic :: System :: Installation/Setup'
     ],
     zip_safe = False
-    test_suite = 'storages.tests.main'
+    test_suite = 'tests.main'
 )
