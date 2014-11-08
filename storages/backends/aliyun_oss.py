@@ -295,10 +295,13 @@ class OssStorageFile(File):
         return self.file.getvalue()
 
     def write(self, content):
-        pass
+        if 'w' not in self._mode:
+            raise AttributeError("File was opened for read-only access.")
+        self.file = StringIO(content)
+        self._is_dirty = True
 
     def close(self):
-        pass
+        
 
 		
 if __name__=='__main__':
