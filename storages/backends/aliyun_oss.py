@@ -46,9 +46,9 @@ from django.utils.encoding import force_text, filepath_to_uri
 from django.utils.six.moves.urllib.parse import urljoin
 
 try:
-    from oss.oss_api import OssAPI
-    from oss.oss_xml_handler import GetServiceXml, GetBucketAclXml, GetBucketXml
-    from oss.oss_util import convert_header2map, safe_get_element
+    from storages.oss.oss_api import OssAPI
+    from storages.oss.oss_xml_handler import GetServiceXml, GetBucketAclXml, GetBucketXml
+    from storages.oss.oss_util import convert_header2map, safe_get_element
 except ImportError:
     raise ImproperlyConfigured(u'未能导入Aliyun OSS SDK.\n参见'+
         u'http://help.aliyun.com/view/13438815.html?spm=5176.383663.9.4.jfQkJZ')
