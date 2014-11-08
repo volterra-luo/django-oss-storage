@@ -301,7 +301,9 @@ class OssStorageFile(File):
         self._is_dirty = True
 
     def close(self):
-        
+        if self._is_dirty:
+            self._storage._put_file(self._name, self.file.getvalue())
+        self.file.close()
 
 		
 if __name__=='__main__':
