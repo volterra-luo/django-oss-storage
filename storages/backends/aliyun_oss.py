@@ -50,8 +50,8 @@ try:
     from oss.oss_xml_handler import GetServiceXml, GetBucketAclXml, GetBucketXml
     from oss.oss_util import convert_header2map, safe_get_element
 except ImportError:
-    raise ImproperlyConfigured("未能导入Aliyun OSS SDK.\n参见 "
-        "http://help.aliyun.com/view/13438815.html?spm=5176.383663.9.4.jfQkJZ")
+    raise ImproperlyConfigured(u'未能导入Aliyun OSS SDK.\n参见'+
+        u'http://help.aliyun.com/view/13438815.html?spm=5176.383663.9.4.jfQkJZ')
 
 OSS_HOST 			= getattr(settings, 'OSS_HOST', "oss.aliyuncs.com")
 ACCESS_KEY_NAME     = getattr(settings, 'OSS_ACCESS_KEY_ID', getattr(settings, 'ACCESS_KEY_ID', None))
@@ -90,7 +90,7 @@ class OssStorage(Storage):
         self.base_url = base_url
 
         if encrypt:
-        	pass
+            pass
 
         if not access_key and not secret_key:
             access_key, secret_key = self._get_access_keys()
@@ -201,6 +201,7 @@ class OssStorage(Storage):
         else:
             content_str = content.read()
         self._put_file(name, content_str)
+        # content.close()
         return name
 
     def delete(self, name):
