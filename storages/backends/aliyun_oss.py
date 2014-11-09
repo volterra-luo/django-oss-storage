@@ -217,6 +217,9 @@ class OssStorage(Storage):
         res = self.connection.head_object(self.bucket, name)
         return res.status == 200
 
+    def listdir(self, path):
+        pass
+
     def size(self, name):
         name = self._clean_name(name)
         if self.entries:
