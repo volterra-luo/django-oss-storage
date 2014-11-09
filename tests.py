@@ -19,6 +19,16 @@ def main():
         'storages',
     )
 
+    global_settings.DATABASES = {
+    	'default': {
+    		'ENGINE': 'django.db.backends.sqlite3',
+    		'NAME': os.path.join(BASE_PATH, 'tests.sqlite'),
+    		'USER': '',
+    		'PASSWORD': '',
+    		'HOST': '',
+    		'PORT': '',
+    	}
+
 	from django.test.utils import get_runner
 	test_runner = get_runner(global_settings)
 
