@@ -6,9 +6,12 @@ import sys
 
 BASE_PATH = os.path.dirname(__file__)
 
-def main():
-	pass
+from django.test import TestCase
 
 
-if __name__ == '__main__':
-    main()
+class SimpleTest(TestCase):
+    def test_basic_addition(self):
+        """
+        Tests that 1 + 1 always equals 2.
+        """
+        self.assertEqual(1 + 1, 2)
