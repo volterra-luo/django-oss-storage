@@ -29,6 +29,8 @@ def main():
     		'PORT': '',
     	}
 
+    global_settings.DEFAULT_FILE_STORAGE = 'backends.s3boto.S3BotoStorage'
+
 	from django.test.utils import get_runner
 	test_runner = get_runner(global_settings)
 
