@@ -33,6 +33,9 @@ def main():
 
 	from django.test.utils import get_runner
 	test_runner = get_runner(global_settings)
+    failures = test_runner.run_tests(['storages'])
+
+    sys.exit(failures)
 
 if __name__ == '__main__':
 	main()
