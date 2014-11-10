@@ -9,6 +9,8 @@ BASE_PATH = os.path.dirname(__file__)
 
 def main():
 
+    sys.exc_clear()
+
 	os.environ["DJANGO_SETTINGS_MODULE"] = "django.conf.global_settings"
 	from django.conf import global_settings
 
