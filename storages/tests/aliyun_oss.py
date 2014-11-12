@@ -15,7 +15,11 @@ from django.core.files.storage import FileSystemStorage
 
 from storages.backends import aliyun_oss
 
-BASE_PATH = os.path.dirname(__file__)
+
+class AliyunOssTestCase(TestCase):
+    @mock.patch('')
+    def setUp(self):
+        self.storage = aliyun_oss.S3BotoStorage()
 
 class SimpleTest(TestCase):
     def test_basic_addition(self):
