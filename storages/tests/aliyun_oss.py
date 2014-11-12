@@ -17,9 +17,6 @@ from storages.backends import aliyun_oss
 
 BASE_PATH = os.path.dirname(__file__)
 
-from django.test import TestCase
-
-
 class SimpleTest(TestCase):
     def test_basic_addition(self):
         """
