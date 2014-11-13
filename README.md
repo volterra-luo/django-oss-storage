@@ -16,7 +16,7 @@ settings
 
 This setting sets the path to the OSS storage class, this file will be installed to django's lib/site-packages folder, or keep it in PYTHONPATH if you store the storage file in other place:
 
-```
+```Python
 DEFAULT_FILE_STORAGE = 'storages.backends.aliyun_oss.OssStorage'
 ```
 
