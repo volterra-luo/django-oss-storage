@@ -11,7 +11,7 @@ setup(
     version = storages.pkg_info.version,
     packages = find_packages(exclude),
     author = 'volterra-luo',
-    author_email = 'volterra-luo@aliyun.com',
+    author_email = 'volterra@aliyun.com',
     url = storages.pkg_info.url,
     description = storages.pkg_info.short_description,
     long_description = open('README.md').read(),
